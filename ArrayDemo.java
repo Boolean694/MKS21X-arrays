@@ -21,7 +21,7 @@ public class ArrayDemo {
 		System.out.print("]");
 	}	
 	
-	//1.
+	//1. (WORKING)
 	public static int countZeros2D(int[][] a) {
 		int c = 0;
 		for(int sd = 0; sd < a.length; sd++) {
@@ -33,12 +33,42 @@ public class ArrayDemo {
 		return c;
 	}	
 	
+	//2a. (WORKING?)
+	public static void fill2D(int[][] a) {
+		for(int we = 0; we < a.length; we++) {
+			for(int rt = 0; rt < a[we].length; rt++) {
+				if(we == rt) {
+					a[we][rt] = 3;
+				}
+				else{a[we][rt] = 1;}
+			}	
+		}	
+	}	
+	
+	//2b.
+	public static int[][] fill2DCopy(int[][] a) {
+		int[][] ac = new int[a.length][a[0].length];
+		for(int qw = 0; qw < a.length; qw++) {
+			for(int qwe = 0; qwe < a[qw].length; qwe++) {
+				if(a[qw][qwe] < 0) {
+					ac[qw][qwe] = 1;
+				}	
+				else {
+					ac[qw][qwe] = 3;
+				}	
+			}	
+		}
+		return ac;
+	}	
+	
     public static void main(String[] args) {
         int[] aaa = {1,3,5,7,9};
-		int[][] bbb = {{1,2,3},{4,5,6,7},{8,9},{0}};
-		int[][] ccc = {{1,5,8,0},{3,5,0,4,3,0},{0,1,0,8}};
+		int[][] bbb = {{1,2,3},{4,5,6},{7,8,9}};
+		int[][] ccc = {{1,5,8,0},{3,5,4,0},{0,1,0,8}};
+		int[][] ddd = {{1,2,-3},{-4,5,6},{7,-8,9}};
 		printArray(aaa);
 		printArray(bbb);
 		System.out.println(countZeros2D(ccc));
+		printArray(fill2DCopy(ddd));
     }
 }
